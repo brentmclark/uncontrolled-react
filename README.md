@@ -1,12 +1,12 @@
-# @unmanaged/react
+# @uncontrolled/react
 
 > Made with create-react-library
 
-[![NPM](https://img.shields.io/npm/v/@unmanaged/react.svg)](https://www.npmjs.com/package/@unmanaged/react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@uncontrolled/react.svg)](https://www.npmjs.com/package/@uncontrolled/react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## About Unmanaged
+## About Uncontrolled
 
-Unmanaged is a form component designed to complement use of HTML5 form fields and validation.  There is no state management, no form field/control libraries to mess with, and no validation.  
+Uncontrolled is a form component designed to complement use of HTML5 form fields and validation.  There is no state management, no form field/control libraries to mess with, and no validation.  
 
 Why?
 
@@ -19,7 +19,7 @@ This package is in alpha and there are no guarantees that version changes will r
 ## Install
 
 ```bash
-yarn add @unmanaged/react
+yarn add @uncontrolled/react
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ yarn add @unmanaged/react
 ```jsx
 import React from 'react'
 
-import Form from '@unmanaged/react'
+import Form from '@uncontrolled/react'
 
 function Example(props) {
     return (

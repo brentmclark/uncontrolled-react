@@ -1318,7 +1318,7 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@unmanaged/react@link:..":
+"@uncontrolled/react@link:..":
   version "0.0.0"
   uid ""
 

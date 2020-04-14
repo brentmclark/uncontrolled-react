@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Form from '@unmanaged/react'
+import Form from '@uncontrolled/react'
 import './index.css'
 
 const App = (props) => {

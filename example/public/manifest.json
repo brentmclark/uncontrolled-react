@@ -1,6 +1,6 @@
 {
-  "short_name": "@unmanaged/react",
-  "name": "@unmanaged/react",
+  "short_name": "@uncontrolled/react",
+  "name": "@uncontrolled/react",
   "icons": [
     {
       "src": "favicon.ico",
