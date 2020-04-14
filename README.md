@@ -12,6 +12,14 @@ Why?
 
 Because HTML has already done that for you and using the native HTML form fields (and validation) is incredibly simple.  Check out the example below if you're skeptical.  It's got state management and validaton baked in.
 
+## Validation
+
+See the MDN docs on HTML Form validation: https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+
+## State Management
+
+The DOM.
+
 ## WARNING
 
 This package is in alpha and there are no guarantees that version changes will retain backwards compatability. Use and update at your own risk.
@@ -34,19 +42,24 @@ npm i @uncontrolled/react
 
 ```jsx
 import React from 'react'
-
 import Form from '@uncontrolled/react'
 
 function Example(props) {
-    return (
-      <Form onSubmit={(event, fieldData) => {
-        console.log({fieldData})
-      }}>
-        <label>First Name</label>
-        <input type="text" required min={2}/>
-        <button type="submit">Submit</button>
-      </Form>
-    )
+  return (
+    <Form
+      onSubmit={({ fieldData }) => {
+        console.log({ fieldData });
+      }}
+    >
+      {({ formIsDirty }) => (
+        <>
+          <label>First Name</label>
+          <input type="text" required min={2} name="firstName" />
+          <button type="submit">Submit</button>
+        </>
+      )}
+    </Form>
+  );
 }
 ```
 
