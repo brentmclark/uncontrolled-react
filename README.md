@@ -50,7 +50,7 @@ function Example(props) {
 }
 ```
 
-- OR -
+## Working Example
 
 Check out this [fully working example on Codesandbox](https://codesandbox.io/s/basic-contact-form-with-serialization-cq7fx?file=/src/index.js)
 
