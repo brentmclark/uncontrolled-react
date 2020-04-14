@@ -18,8 +18,16 @@ This package is in alpha and there are no guarantees that version changes will r
 
 ## Install
 
+using `yarn`
+
 ```bash
 yarn add @uncontrolled/react
+```
+
+using `npm`
+
+```bash
+npm i @uncontrolled/react
 ```
 
 ## Usage
@@ -41,6 +49,10 @@ function Example(props) {
     )
 }
 ```
+
+- OR -
+
+Check out this [fully working example on Codesandbox](https://codesandbox.io/s/basic-contact-form-with-serialization-cq7fx?file=/src/index.js)
 
 ## License
 
