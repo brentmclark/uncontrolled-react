@@ -5,7 +5,7 @@ import './index.css'
 
 const App = (props) => {
   function onSubmit({fieldData}) {
-    const { firstName, lastName, email, phoneNumber } = fieldData;
+    const {firstName, lastName, email, phoneNumber} = fieldData
     alert(
       `
         Hello ${firstName} ${lastName}!\r\n

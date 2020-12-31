@@ -1,5 +1,4 @@
 import React from "react";
-import serialize from "form-serialize";
 
 export default function Form(props) {
   const [formIsDirty, setFormIsDirty] = React.useState(false);
@@ -60,8 +59,12 @@ export default function Form(props) {
     <form
       onSubmit={event => {
         event.preventDefault();
-        const fieldData = serialize(event.target, { hash: true });
-        onSubmit && onSubmit({ event, fieldData });
+        const formData = new FormData(event.target);
+        const fieldData = {};
+        for (const [key, value] of formData.entries()) {
+          fieldData[key] = value;
+        }
+        onSubmit && onSubmit({ event, formData, fieldData });
       }}
     >
       {children({ formIsDirty })}

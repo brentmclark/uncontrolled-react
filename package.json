@@ -53,9 +53,7 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "form-serialize": "^0.7.2"
-  },
+  "dependencies": {},
   "bugs": {
     "url": "https://github.com/brentmclark/uncontrolled-react/issues"
   },
