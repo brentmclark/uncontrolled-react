@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import Form from '@uncontrolled/react'
-import './index.css'
+import Form from "@uncontrolled/react";
+import "./index.css";
 
-const App = (props) => {
-  function onSubmit({fieldData}) {
-    const {firstName, lastName, email, phoneNumber} = fieldData
+const App = props => {
+  function onSubmit({ fieldData }) {
+    const { firstName, lastName, email, phoneNumber } = fieldData;
     alert(
       `
         Hello ${firstName} ${lastName}!\r\n
@@ -16,9 +16,8 @@ const App = (props) => {
   }
 
   return (
-  <Form onSubmit={onSubmit}>
-    {
-      ({formIsDirty}) => (
+    <Form onSubmit={onSubmit}>
+      {({ formIsDirty }) => (
         <>
           <div className="field">
             <label>First Name</label>
@@ -47,10 +46,9 @@ const App = (props) => {
             )}
           </div>
         </>
-      )
-    }
-  </Form>
-   )
-}
+      )}
+    </Form>
+  );
+};
 
-export default App
+export default App;

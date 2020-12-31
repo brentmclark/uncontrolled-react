@@ -1,7 +1,7 @@
-import Form from '.'
+import Form from ".";
 
-describe('<Form />', () => {
-  it('renders', () => {
-    expect(Form).toBeTruthy()
-  })
-})
+describe("<Form />", () => {
+  it("renders", () => {
+    expect(Form).toBeTruthy();
+  });
+});
