@@ -1,30 +1,29 @@
 import React from "react";
-import Form from ".";
+import useForm from ".";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/extend-expect";
 
 function ContactForm(props) {
+  const { Form, isDirty } = useForm(handleSubmit);
   const [submitInfo, setSubmitInfo] = React.useState({});
   function handleSubmit(submitInfo) {
     setSubmitInfo(submitInfo);
   }
+
   const { event, formData, fieldData } = submitInfo;
+
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        {() => (
-          <>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              defaultValue="Brent"
-              name="firstName"
-              id="firstName"
-            />
-            <button type="submit">Submit</button>
-          </>
-        )}
+        <label htmlFor="firstName">First Name</label>
+        <input
+          type="text"
+          defaultValue="Brent"
+          name="firstName"
+          id="firstName"
+        />
+        <button type="submit">Submit</button>
       </Form>
       <div>
         {fieldData && (
@@ -35,6 +34,7 @@ function ContactForm(props) {
             {formData.get("firstName")}
           </div>
         )}
+        {isDirty && <span data-testid="dirty-tracker" />}
       </div>
     </>
   );
@@ -44,7 +44,7 @@ test("can access fieldData", () => {
   render(<ContactForm />);
   const firstNameField = screen.getByLabelText("First Name");
   const submitButton = screen.getByText("Submit");
-  expect(firstNameField).toBeTruthy();
+  expect(firstNameField).toBeInTheDocument();
   userEvent.click(submitButton);
   expect(screen.getByTestId("fieldData")).toHaveTextContent(
     JSON.stringify({ firstName: "Brent" })

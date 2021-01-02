@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function Form(props) {
-  const [formIsDirty, setFormIsDirty] = React.useState(false);
+export default function useForm({ onSubmit }) {
+  const [isDirty, setisDirty] = React.useState(false);
 
   React.useLayoutEffect(() => {
     const validationErrorClass = "validation-error";
@@ -9,8 +9,8 @@ export default function Form(props) {
     const inputs = document.querySelectorAll("input, select, textarea");
 
     const setFormToDirty = () => {
-      if (formIsDirty === false) {
-        setFormIsDirty(true);
+      if (isDirty === false) {
+        setisDirty(true);
       }
     };
 
@@ -54,7 +54,10 @@ export default function Form(props) {
     });
   }, []);
 
-  const { children, onSubmit } = props;
+  return { Form, isDirty };
+}
+
+function Form({ onSubmit, children }) {
   return (
     <form
       onSubmit={event => {
@@ -67,7 +70,7 @@ export default function Form(props) {
         onSubmit && onSubmit({ event, formData, fieldData });
       }}
     >
-      {children({ formIsDirty })}
+      {children}
     </form>
   );
 }
