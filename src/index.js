@@ -1,12 +1,26 @@
 import React from "react";
 
-export default function useForm({ onSubmit }) {
+const defaultConfig = {
+  validationErrorClass: "validation-error",
+  parentErrorClass: "has-validation-error",
+  errorElementTagName: "div",
+  inputElementSelector: "input, select, textarea"
+};
+
+export default function useForm(config) {
   const [isDirty, setisDirty] = React.useState(false);
+  const formElem = React.useRef(null);
 
   React.useLayoutEffect(() => {
-    const validationErrorClass = "validation-error";
-    const parentErrorClass = "has-validation-error";
-    const inputs = document.querySelectorAll("input, select, textarea");
+    const finalConfig = Object.assign({}, defaultConfig, config);
+    const {
+      validationErrorClass,
+      parentErrorClass,
+      errorElementTagName,
+      inputElementSelector
+    } = finalConfig;
+    const inputs = document.querySelectorAll(inputElementSelector);
+    console.log({ inputs, inputElementSelector });
 
     const setFormToDirty = () => {
       if (isDirty === false) {
@@ -20,7 +34,7 @@ export default function useForm({ onSubmit }) {
         const parent = input.parentNode;
         const error =
           parent.querySelector(`.${validationErrorClass}`) ||
-          document.createElement("div");
+          document.createElement(errorElementTagName);
 
         if (!input.validity.valid && input.validationMessage) {
           error.className = validationErrorClass;
@@ -54,23 +68,25 @@ export default function useForm({ onSubmit }) {
     });
   }, []);
 
-  return { Form, isDirty };
-}
+  function Form({ onSubmit, children, ...rest }) {
+    return (
+      <form
+        {...rest}
+        onSubmit={event => {
+          event.preventDefault();
+          console.log("Submitting...");
+          const formData = new FormData(event.target);
+          const fieldData = {};
+          for (const [key, value] of formData.entries()) {
+            fieldData[key] = value;
+          }
+          onSubmit && onSubmit({ event, formData, fieldData });
+        }}
+      >
+        {children}
+      </form>
+    );
+  }
 
-function Form({ onSubmit, children }) {
-  return (
-    <form
-      onSubmit={event => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const fieldData = {};
-        for (const [key, value] of formData.entries()) {
-          fieldData[key] = value;
-        }
-        onSubmit && onSubmit({ event, formData, fieldData });
-      }}
-    >
-      {children}
-    </form>
-  );
+  return { Form, isDirty };
 }
