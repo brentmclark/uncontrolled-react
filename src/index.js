@@ -3,7 +3,7 @@ import React from "react";
 export default function useForm({ onSubmit }) {
   const [isDirty, setisDirty] = React.useState(false);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     const validationErrorClass = "validation-error";
     const parentErrorClass = "has-validation-error";
     const inputs = document.querySelectorAll("input, select, textarea");
@@ -36,22 +36,33 @@ export default function useForm({ onSubmit }) {
         }
       }
 
-      input.addEventListener("input", function() {
+      function handleInput() {
         // We can only update the error or hide it on input.
         // Otherwise it will show when typing.
         checkValidity({ insertError: false });
 
         // also handle dirty tracking
         setFormToDirty();
-      });
-      input.addEventListener("invalid", function(e) {
+      }
+
+      function handleInvalid(e) {
         // prevent showing the default display
         e.preventDefault();
 
         // We can also create the error in invalid.
         checkValidity({ insertError: true });
-      });
+      }
+
+      input.addEventListener("input", handleInput);
+      input.addEventListener("invalid", handleInvalid);
     });
+
+    return () => {
+      inputs.forEach(input => {
+        input.removeEventListener('input', handleInput)
+        input.removeEventListener('invalid', handleInvalid)
+      })
+    }
   }, []);
 
   return { Form, isDirty };
