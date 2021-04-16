@@ -24,6 +24,8 @@ The DOM.
 
 This package is in alpha and there are no guarantees that version changes will retain backwards compatability. Use and update at your own risk.
 
+That said, the API itself is likely settled.  A render prop offers the most flexibility and greatest opportunity for backwards compatability.
+
 ## Install
 
 using `yarn`
