@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/uncontrolled-react/static/css/main.c413b03c.chunk.css",
+    "main.js": "/uncontrolled-react/static/js/main.c76f95fa.chunk.js",
+    "main.js.map": "/uncontrolled-react/static/js/main.c76f95fa.chunk.js.map",
+    "runtime-main.js": "/uncontrolled-react/static/js/runtime-main.f2355722.js",
+    "runtime-main.js.map": "/uncontrolled-react/static/js/runtime-main.f2355722.js.map",
+    "static/js/2.f498573b.chunk.js": "/uncontrolled-react/static/js/2.f498573b.chunk.js",
+    "static/js/2.f498573b.chunk.js.map": "/uncontrolled-react/static/js/2.f498573b.chunk.js.map",
+    "index.html": "/uncontrolled-react/index.html",
+    "precache-manifest.16edf391371540fecf1335d0a80f5d50.js": "/uncontrolled-react/precache-manifest.16edf391371540fecf1335d0a80f5d50.js",
+    "service-worker.js": "/uncontrolled-react/service-worker.js",
+    "static/css/main.c413b03c.chunk.css.map": "/uncontrolled-react/static/css/main.c413b03c.chunk.css.map",
+    "static/js/2.f498573b.chunk.js.LICENSE.txt": "/uncontrolled-react/static/js/2.f498573b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f2355722.js",
+    "static/js/2.f498573b.chunk.js",
+    "static/css/main.c413b03c.chunk.css",
+    "static/js/main.c76f95fa.chunk.js"
+  ]
+}
