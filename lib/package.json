@@ -1,0 +1,51 @@
+{
+  "name": "@uncontrolled/react",
+  "version": "1.0.0-alpha.9",
+  "description": "Made with create-react-library",
+  "author": "brentmclark",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brentmclark/uncontrolled-react.git"
+  },
+  "main": "dist/bundle.js",
+  "source": "src/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-external-helpers": "^7.12.13",
+    "@babel/plugin-proposal-do-expressions": "^7.12.13",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.13.8",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
+    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+    "@babel/plugin-proposal-pipeline-operator": "^7.12.13",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-stage-1": "^7.8.3",
+    "rollup": "^2.45.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/brentmclark/uncontrolled-react/issues"
+  },
+  "homepage": "https://github.com/brentmclark/uncontrolled-react#readme",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {}
+}
