@@ -1,7 +1,7 @@
 {
   "name": "@uncontrolled/react",
-  "version": "1.0.0-alpha.9",
-  "description": "Made with create-react-library",
+  "version": "1.0.0-beta.1",
+  "description": "A form component that enables classic form development as an alternative to the highly-complex approaches of modern react form libraries",
   "author": "brentmclark",
   "license": "MIT",
   "repository": {
