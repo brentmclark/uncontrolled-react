@@ -1,103 +1,65 @@
 import React from "react";
-import useForm from "@uncontrolled/react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import "./index.css";
+
+import BasicForm from './examples/basic-form'
+import WithExternalState from './examples/with-external-state'
+import WithFetchedData from './examples/with-fetched-data'
 
 const App = props => {
   return (
-    <section>
-      <FormA />
-      <FormB />
-    </section>
+    <Router>
+      <div>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/basic-form">
+            <BasicForm />
+          </Route>
+          <Route path="/with-external-state">
+            <WithExternalState />
+          </Route>
+          <Route path="/with-fetched-data">
+            <WithFetchedData />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   )
 };
 
-function FormBody(props) {
-  const [firstName, setFirstName] = React.useState('')
-  console.log({firstName})
+function Home() {
   return (
-    <>
-      <div className="field">
-          <label>First Name</label>
-          <input type="text" name="firstName" required onChange={e => setFirstName(e.target.value)} />
-        </div>
-        <div className="field">
-          <label>Last Name</label>
-          <input type="text" name="lastName" required />
-        </div>
-        <div className="field">
-          <label>Email Address</label>
-          <input type="email" name="email" required />
-        </div>
-        <div className="field">
-          <label>Phone Number</label>
-          <input type="tel" name="phoneNumber" required pattern="\d{10}" />
-        </div>
-        <div>
-          <button type="submit">Sign Me Up!</button>
-        </div>
-    </>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/basic-form">Basic Form</Link>
+        </li>
+        <li>
+          <Link to="/with-external-state">With External State</Link>
+        </li>
+        <li>
+          <Link to="/with-fetched-data">With Fetched Data</Link>
+        </li>
+      </ul>
+    </nav>
   )
 }
 
-function FormA(props) {
-  const {Form, isDirty} = useForm({validationErrorClass: 'bleh', parentErrorClass: 'bleh', inputElementSelector: ''})
-  const [message, setMessage] = React.useState('')
 
-  function onSubmit({ fieldData }) {
-    const { firstName, lastName, email, phoneNumber } = fieldData;
-    setMessage(
-      `
-        Hello ${firstName} ${lastName}!\r\n
-        Since you signed up, we will email you at ${email} or call you at ${phoneNumber}.\r\n
-        Thanks!
-      `
-    );
-  }
 
-  return (
-    <>
-      {React.useMemo(() => (
-        <Form onSubmit={onSubmit}>
-          <FormBody />
-        </Form>
-      ), [])}
-      <div
-        style={{
-          padding: '20px',
-          border: '1px solid red',
-          color: 'red', 
-          fontWeight: '700',
-          margin: '20px',
-        }}>
-            {isDirty && 'Dirty Form!!!'}
-        </div>
-      <div
-        style={{
-          padding: '20px',
-          border: '1px solid blue',
-          color: 'blue', 
-          fontWeight: '700',
-          margin: '20px',
-        }}>
-          {message}
-        </div>
-    </>
-  );
-}
 
-function FormB(props) {
-  const {Form} = useForm()
-  return React.useMemo(() => (
-    <Form
-      onSubmit={({ fieldData }) => {
-        console.log({ fieldData });
-      }}
-    >
-      <label>First Name</label>
-      <input type="text" required min={2} name="firstName" />
-      <button type="submit">Submit</button>
-    </Form>
-  ), []);
-}
 
 export default App;
